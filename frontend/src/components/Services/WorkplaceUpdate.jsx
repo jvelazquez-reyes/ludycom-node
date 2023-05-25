@@ -21,6 +21,7 @@ const WorkplaceUpdate = () => {
    return workplace.id.toString() === id;
   });
 
+  // Populate input fields with existing workplace for update
   const [code, setCode] = useState(
     filteredWorkplace && filteredWorkplace[0].code
   );
@@ -39,6 +40,7 @@ const WorkplaceUpdate = () => {
 
   const dispatch = useDispatch();
 
+  // Update workplace
   const handleUpdate = async (data, e) => {
     e.preventDefault();
 
@@ -47,7 +49,7 @@ const WorkplaceUpdate = () => {
     navigate("/workplaces/all-workplaces")    
   };
 
-  // Hook form
+  // Hook form input field validation
   const {
     register,
     handleSubmit,

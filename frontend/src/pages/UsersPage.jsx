@@ -5,7 +5,7 @@ import SideBar from "../components/Services/Layout/SideBar";
 import AllUsers from "../components/Services/AllUsers";
 
 const UsersPage = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(1); // For sidebar menu
 
   return (
     <div>

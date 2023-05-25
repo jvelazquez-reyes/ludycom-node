@@ -20,6 +20,7 @@ const AllWorkplaces = () => {
     (state) => state.workplace || {}
   );
 
+  // Workplace detail
   const handlePreview = (params) => {
     setOpen(true);
     const filteredWorkplace = workplace.filter(
@@ -30,15 +31,18 @@ const AllWorkplaces = () => {
 
   const dispatch = useDispatch();
 
+  // Get all workplaces
   useEffect(() => {
     dispatch(getWorkplaces());
   }, [dispatch]);
 
+  // Delete workplace
   const handleDelete = async (id) => {
     dispatch(deleteWorkplace(id));
     window.location.reload();
   };
 
+  // Create columns and rows for DataGrid that comes with the pagination feature
   const columns = [
     { field: "id", headerName: "ID", minWidth: 20, flex: 0.7 },
 

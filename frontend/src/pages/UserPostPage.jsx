@@ -5,7 +5,7 @@ import SideBar from "../components/Services/Layout/SideBar";
 import UserPost from "../components/Services/UserPost";
 
 const UserPostPage = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(1); // For sidebar menu
 
   return (
     <div>

@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 
+// isAuthenticated would be use to protect routes, but not working at the moment
 exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   console.log(res.cookies['token'])
   const { token } = req.cookies['token'];

@@ -13,6 +13,7 @@ const UserPost = () => {
 
   const { usersLoading } = useSelector((state) => state.users || {});
 
+  // Set input fields for form
   const [names, setNames] = useState("");
   const [surnames, setUsernames] = useState("");
   const [birthdate, setBirthdate] = useState("");
@@ -24,6 +25,7 @@ const UserPost = () => {
 
   const dispatch = useDispatch();
 
+  // Create user
   const handlePost = async (data, e) => {
     e.preventDefault();
 
@@ -33,7 +35,7 @@ const UserPost = () => {
     window.location.reload();
   };
 
-  // Hook form
+  // Hook form for input field validation
   const {
     register,
     handleSubmit,

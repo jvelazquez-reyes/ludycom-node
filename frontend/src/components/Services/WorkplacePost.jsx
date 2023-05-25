@@ -13,6 +13,7 @@ const WorkplacePost = () => {
 
   const { workplaceLoading } = useSelector((state) => state.workplace || {});
 
+  // Set the input fields for forms
   const [code, setCode] = useState("");
   const [name, setName] = useState("");
   const [manager, setManager] = useState("");
@@ -20,6 +21,7 @@ const WorkplacePost = () => {
 
   const dispatch = useDispatch();
 
+  // Create workplace
   const handlePost = async (data, e) => {
     e.preventDefault();
 
@@ -29,7 +31,7 @@ const WorkplacePost = () => {
     window.location.reload();
   };
 
-  // Hook form
+  // Hook form for input field validation
   const {
     register,
     handleSubmit,

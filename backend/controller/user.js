@@ -13,10 +13,12 @@ router.post(
     try {
       const { username, password } = req.body;
 
+      // Check if all the required fields are provided
       if (!username || !password) {
         return next(new ErrorHandler("Please provide all fields!", 400));
       }
 
+      // Query to get default user
       queryPromise = () => {
         return new Promise((resolve, reject) => {
           pool.query("SELECT * FROM user", (err, res) => {
@@ -39,11 +41,13 @@ router.post(
           new ErrorHandler("Please provide the correct information", 400)
         );
       } else {
+        // The token is successfully generated
         const id = user[0].id;
         const token = jwt.sign({ id: id }, process.env.JWT_SECRET_KEY, {
           expiresIn: process.env.JWT_EXPIRES,
         });
 
+        // Attempt to set auth credentials in cookies
         const cookiesOptions = {
           expires: new Date(
             Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
@@ -63,7 +67,7 @@ router.post(
   })
 );
 
-// log out user
+// log out user (not implemented at the moment)
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {

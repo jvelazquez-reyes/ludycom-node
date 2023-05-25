@@ -95,6 +95,7 @@ export const deleteWorkplace = (id) => async (dispatch) => {
     dispatch({
       type: "deleteWorkplaceRequest",
     });
+    
     const { data } = await axios.delete(
       `${server}/workplaces/workplace-delete/${id}`
     );

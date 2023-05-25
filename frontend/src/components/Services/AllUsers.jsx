@@ -26,15 +26,18 @@ const AllUsers = () => {
 
   const dispatch = useDispatch();
 
+  // Get all user
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
+  // Delete user
   const handleDelete = async (id) => {
     dispatch(deleteUser(id));
     window.location.reload();
   };
 
+  // Create columns and rows for DataGrid that comes with the pagination feature
   const columns = [
     { field: "id", headerName: "ID", minWidth: 20, flex: 0.7 },
 

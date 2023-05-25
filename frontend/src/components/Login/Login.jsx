@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ import styles from "../../styles/styles";
 
 const Login = () => {
   const navigate = useNavigate();
+  // Set fields required for login
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState("");
@@ -17,6 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // POST request
     await axios
       .post(
         `${server}/user/login-user`,

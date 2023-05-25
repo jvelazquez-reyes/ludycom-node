@@ -22,6 +22,7 @@ const UserUpdate = () => {
    return user.id.toString() === id;
   });
 
+  // Populate the input fields for update
   const [names, setNames] = useState(
     filteredUser && filteredUser[0].names
   );
@@ -55,15 +56,16 @@ const UserUpdate = () => {
 
   const dispatch = useDispatch();
 
+  // Update user
   const handleUpdate = async (data, e) => {
     e.preventDefault();
 
-    dispatch(updateUser(names, surnames, email, id));
+    dispatch(updateUser(names, surnames, birthdate, email, document, code, salary, status, id));
 
     navigate("/users/all-users")    
   };
 
-  // Hook form
+  // Hook form for input field validation
   const {
     register,
     handleSubmit,

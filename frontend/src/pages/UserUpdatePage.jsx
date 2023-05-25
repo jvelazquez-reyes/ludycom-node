@@ -5,7 +5,7 @@ import SideBar from "../components/Services/Layout/SideBar";
 import UserUpdate from "../components/Services/UserUpdate";
 
 const UserUpdatePage = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(1); // For sidebar menu
 
   return (
     <div>

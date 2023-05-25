@@ -5,21 +5,22 @@ import { useNavigate } from "react-router-dom";
 // import locals
 import Login from "../components/Login/Login";
 
-const LoginPage = () => {
-  const navigate = useNavigate();
-  const { isAuthenticated, loading } = useSelector((state) => state.user);
+// // Module not working at the moment
+// const LoginPage = () => {
+//   const navigate = useNavigate();
+//   const { isAuthenticated, loading } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    if (isAuthenticated === true) {
-      navigate("/");
-    }
-  }, [isAuthenticated, loading]);
+//   useEffect(() => {
+//     if (isAuthenticated === true) {
+//       navigate("/");
+//     }
+//   }, [isAuthenticated, loading]);
 
-  return (
-    <div>
-      <Login />
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <Login />
+//     </div>
+//   );
+// };
 
-export default LoginPage;
+// export default LoginPage;

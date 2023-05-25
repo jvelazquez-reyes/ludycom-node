@@ -70,7 +70,7 @@ router.delete(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id } = req.params;
-s
+
       queryPromise = () => {
         return new Promise((resolve, reject) => {
           pool.query("DELETE FROM workplace WHERE id = ?",

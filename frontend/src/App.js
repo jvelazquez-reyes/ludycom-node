@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -14,19 +14,15 @@ import {
   WorkplacePostPage,
   WorkplaceUpdatePage,
 } from "./routes/Routes.js";
-import Store from "./redux/store";
-import { loadUser } from "./redux/actions/user";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
-  useEffect(() => {
-    //Store.dispatch(loadUser());
-  }, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        {/* Get all users */}
         <Route
           path="/users/all-users"
           element={
@@ -35,6 +31,7 @@ const App = () => {
             //</ProtectedRoute>
           }
         />
+        {/* Update user */}
         <Route
           path="/users/users-update/:id"
           element={
@@ -43,6 +40,7 @@ const App = () => {
             //</ProtectedRoute>
           }
         />
+        {/* Create user */}
         <Route
           path="/users/users-post"
           element={
@@ -52,6 +50,7 @@ const App = () => {
           }
         />
 
+          {/* Get all workplaces */}
         <Route
           path="/workplaces/all-workplaces"
           element={
@@ -60,6 +59,7 @@ const App = () => {
             //</ProtectedRoute>
           }
         />
+        {/* Update workplace */}
         <Route
           path="/workplaces/workplace-update/:id"
           element={
@@ -68,6 +68,7 @@ const App = () => {
             //</ProtectedRoute>
           }
         />
+        {/* Delete workplace */}
         <Route
           path="/workplaces/workplace-post"
           element={
@@ -77,6 +78,7 @@ const App = () => {
           }
         />
       </Routes>
+      {/* Toastify response messages */}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}

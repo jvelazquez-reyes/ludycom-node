@@ -5,7 +5,7 @@ import SideBar from "../components/Services/Layout/SideBar";
 import AllWorkplaces from "../components/Services/AllWorkplaces";
 
 const WorkplacesPage = () => {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(2); // For sidebar menu
 
   return (
     <div>

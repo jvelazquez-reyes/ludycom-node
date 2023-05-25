@@ -1,4 +1,4 @@
-import LoginPage from '../pages/LoginPage';
+//import LoginPage from '../pages/LoginPage';
 import UsersPage from "../pages/UsersPage";
 import UserPostPage from "../pages/UserPostPage";
 import UserUpdatePage from '../pages/UserUpdatePage';
@@ -8,7 +8,7 @@ import WorkplaceUpdatePage from '../pages/WorkplaceUpdatePage';
 
 
 export {
-    LoginPage,
+    //LoginPage,
 
     UsersPage,
     UserPostPage,
