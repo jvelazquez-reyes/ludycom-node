@@ -20,7 +20,8 @@ export const createUser =
           code,
           salary,
           status,
-        }
+        },
+        { withCredentials: true }
       );
       dispatch({
         type: "usersCreateSuccess",
@@ -46,6 +47,7 @@ export const getUsers = () => async (dispatch) => {
 
     const { data } = await axios.get(
       `${server}/users/all-users`,
+      { withCredentials: true }
     );
     dispatch({
       type: "getUsersSuccess",
@@ -79,7 +81,8 @@ export const updateUser =
           salary,
           status,
           id,
-        }
+        },
+        { withCredentials: true }
       );
 
       dispatch({
@@ -104,7 +107,8 @@ export const deleteUser = (id) => async (dispatch) => {
       type: "deleteUsersRequest",
     });
     const { data } = await axios.delete(
-      `${server}/users/user-delete/${id}`
+      `${server}/users/user-delete/${id}`,
+      { withCredentials: true }
     );
 
     dispatch({

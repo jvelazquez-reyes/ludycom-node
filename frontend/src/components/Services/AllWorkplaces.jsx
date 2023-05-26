@@ -20,9 +20,6 @@ const AllWorkplaces = () => {
     (state) => state.workplace || {}
   );
 
-  const { isAuthenticated, user } = useSelector((state) => state.user)
-  console.log(user)
-
   // Workplace detail
   const handlePreview = (params) => {
     setOpen(true);

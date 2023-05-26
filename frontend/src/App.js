@@ -26,32 +26,32 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         {/* Get all users */}
         <Route
           path="/users/all-users"
           element={
-            //<ProtectedRoute>
-            <UsersPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UsersPage />
+            </ProtectedRoute>
           }
         />
         {/* Update user */}
         <Route
           path="/users/users-update/:id"
           element={
-            //<ProtectedRoute>
-            <UserUpdatePage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UserUpdatePage />
+            </ProtectedRoute>
           }
         />
         {/* Create user */}
         <Route
           path="/users/users-post"
           element={
-            //<ProtectedRoute>
-            <UserPostPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UserPostPage />
+            </ProtectedRoute>
           }
         />
 
@@ -59,27 +59,27 @@ const App = () => {
         <Route
           path="/workplaces/all-workplaces"
           element={
-            //<ProtectedRoute>
-            <WorkplacesPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplacesPage />
+            </ProtectedRoute>
           }
         />
         {/* Update workplace */}
         <Route
           path="/workplaces/workplace-update/:id"
           element={
-            //<ProtectedRoute>
-            <WorkplaceUpdatePage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplaceUpdatePage />
+            </ProtectedRoute>
           }
         />
         {/* Delete workplace */}
         <Route
           path="/workplaces/workplace-post"
           element={
-            //<ProtectedRoute>
-            <WorkplacePostPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplacePostPage />
+            </ProtectedRoute>
           }
         />
       </Routes>

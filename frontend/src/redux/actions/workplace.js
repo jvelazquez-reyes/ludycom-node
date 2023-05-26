@@ -16,7 +16,8 @@ export const createWorkplace =
           name,
           manager,
           status,
-        }
+        },
+        { withCredentials: true }
       );
       dispatch({
         type: "workplaceCreateSuccess",
@@ -42,6 +43,7 @@ export const getWorkplaces = () => async (dispatch) => {
 
     const { data } = await axios.get(
       `${server}/workplaces/all-workplaces`,
+      { withCredentials: true }
     );
     dispatch({
       type: "getWorkplacesSuccess",
@@ -71,7 +73,8 @@ export const updateWorkplace =
           manager,
           status,
           id,
-        }
+        },
+        { withCredentials: true }
       );
 
       dispatch({
@@ -97,7 +100,8 @@ export const deleteWorkplace = (id) => async (dispatch) => {
     });
     
     const { data } = await axios.delete(
-      `${server}/workplaces/workplace-delete/${id}`
+      `${server}/workplaces/workplace-delete/${id}`,
+      { withCredentials: true }
     );
 
     dispatch({

@@ -8,7 +8,7 @@ const { pool } = require("../db");
 
 // login user
 router.post(
-  "/login-user",
+  "/",
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { username, password } = req.body;
@@ -73,7 +73,20 @@ router.get(
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const user = await User.findById(req.user.id);
+      queryPromise = () => {
+        return new Promise((resolve, reject) => {
+          console.log(req.user.id)
+          pool.query("SELECT * FROM user WHERE id = ?",
+          [req.user.id], (err, res) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(res);
+          });
+        });
+      };
+    
+      const user = await queryPromise();
 
       if (!user) {
         return next(new ErrorHandler("User doesn't exists", 400));
