@@ -1,4 +1,4 @@
-# GIS web app in Django
+# Node web app
 
 ## Run the project locally
 To run the whole project locally, clone this repo:
@@ -100,6 +100,8 @@ Navigate in the app to perfrom CRUD operations in the `users` and `workplace` mo
 - REST API with `Express - Node.js`
 - Web interface with `React.js`
 - The `Urls` are the following:
+  - Login (the entry point)
+    - `http://localhost:3000
   - Users
     - `http://localhost:3000/users/users-post` to create a new user`
     - `http://localhost:3000/users/all-users` to get all users`
