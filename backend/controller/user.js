@@ -54,13 +54,35 @@ router.post(
           ),
           httpOnly: true,
         };
-        res.cookie("jwt", token, cookiesOptions);
+        res.cookie("token", token, cookiesOptions);
         res.status(200).json({
           success: true,
           user,
+          token,
         });
       }
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
+// load user
+router.get(
+  "/getuser",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const user = await User.findById(req.user.id);
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists", 400));
+      }
+
+      res.status(200).json({
+        success: true,
+        user,
+      });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }

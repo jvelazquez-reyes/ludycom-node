@@ -70,7 +70,6 @@ router.delete(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id } = req.params;
-      console.log(id)
 
       queryPromise = () => {
         return new Promise((resolve, reject) => {
