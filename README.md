@@ -16,6 +16,53 @@ DB_USER = "your_user"
 DB_PASSWORD = "your_password"
 DB_PORT = 3306
 DB_DATABASE = "ludycomdb"
+
+JWT_SECRET_KEY = "dfbkjgflseiia3948943954wfsdchsgfuw#%#%"
+JWT_EXPIRES = 7d
+JWT_COOKIE_EXPIRES = 90
+```
+
+Create the database and tables with this script:
+```bash
+CREATE DATABASE IF NOT EXISTS ludycomdb;
+
+USE ludycomdb;
+
+CREATE TABLE user (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(45) DEFAULT NULL,
+    password VARCHAR(10) DEFAULT NULL,
+    PRIMARY KEY  (id)
+);
+
+DESCRIBE user;
+
+INSERT INTO user values
+    (1, 'Ludycom', 'test');
+
+SELECT * FROM user;
+
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    names VARCHAR(50),
+    surnames VARCHAR(50),
+    birthdate DATE,
+    email VARCHAR(50),
+    document INT(7),
+    code INT(2),
+    salary DECIMAL(10,2),
+    status BOOLEAN DEFAULT TRUE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE workplace (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    code INT(2),
+    name VARCHAR(50),
+    manager INT(7),
+    status BOOLEAN DEFAULT TRUE,
+    PRIMARY KEY (id)
+);
 ```
 
 In the local folder where you cloned the project, go to `backend` directory and:
@@ -32,8 +79,18 @@ npm install
 npm start
 ```
 
+Now you are in the `login` page. The credentials are:
+```bash
+username: Ludycom
+password: test
+```
+
+Navigate in the app to perfrom CRUD operations in the `users` and `workplace` models.
+
+
 ## Features
 - [This is the MySQL database script](https://github.com/jvelazquez-reyes/ludycom-node/blob/main/backend/db/database.sql) 
+- All the routes are protected and only the authenticated user will be allowed to navigate in the app
 - CRUD operations (users)
 - CRUD operations (workplaces)
 - User and workplaces query with pagination using [MUI X Data Grid](https://mui.com/x/react-data-grid/)
