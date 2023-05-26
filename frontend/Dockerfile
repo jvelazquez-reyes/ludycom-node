@@ -1,9 +1,9 @@
 # Stage 1
-FROM node:14
+FROM node:alpine
 
-WORKDIR /frontend
-COPY package.json .
-COPY package-lock.json .
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
 RUN npm install
-COPY . .
-CMD npm start
+CMD ["npm", "run", "start"]
