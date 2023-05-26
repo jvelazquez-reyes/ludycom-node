@@ -17,6 +17,9 @@ const AllUsers = () => {
   const [user, setUser] = useState([]);
 
   const { users, usersLoading } = useSelector((state) => state.users || {});
+  const { isAuthenticated } = useSelector((state) => state.user);
+
+  console.log(user)
 
   const handlePreview = (params) => {
     setOpen(true);

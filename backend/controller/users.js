@@ -8,6 +8,7 @@ const { pool } = require("../db");
 // create new user
 router.post(
   "/users-post",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { names, surnames, birthdate, email, document, code, salary, status } = req.body;
@@ -39,6 +40,7 @@ router.post(
 // get all radioactive sources
 router.get(
   "/all-users",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       queryPromise = () => {
@@ -67,10 +69,10 @@ router.get(
 // delete radSource of collection
 router.delete(
   "/user-delete/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id } = req.params;
-      console.log(id)
 
       queryPromise = () => {
         return new Promise((resolve, reject) => {
@@ -99,6 +101,7 @@ router.delete(
 // update radSource of collection
 router.put(
   "/users-update/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const {

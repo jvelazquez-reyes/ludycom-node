@@ -8,6 +8,7 @@ const { pool } = require("../db");
 // create workplace
 router.post(
   "/workplace-post",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { code, name, manager, status } = req.body;
@@ -39,6 +40,7 @@ router.post(
 // get all workplaces
 router.get(
   "/all-workplaces",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       queryPromise = () => {
@@ -67,6 +69,7 @@ router.get(
 // delete workplace
 router.delete(
   "/workplace-delete/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -98,6 +101,7 @@ router.delete(
 // update workplace
 router.put(
   "/workplace-update/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const {

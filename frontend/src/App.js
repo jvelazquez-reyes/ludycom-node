@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -14,39 +14,44 @@ import {
   WorkplacePostPage,
   WorkplaceUpdatePage,
 } from "./routes/Routes.js";
+import Store from "./redux/store";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { loadUser } from "./redux/actions/user";
 
 const App = () => {
+  useEffect(() => {
+    Store.dispatch(loadUser());
+  }, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/" element={<LoginPage />} />
         {/* Get all users */}
         <Route
           path="/users/all-users"
           element={
-            //<ProtectedRoute>
-            <UsersPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UsersPage />
+            </ProtectedRoute>
           }
         />
         {/* Update user */}
         <Route
           path="/users/users-update/:id"
           element={
-            //<ProtectedRoute>
-            <UserUpdatePage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UserUpdatePage />
+            </ProtectedRoute>
           }
         />
         {/* Create user */}
         <Route
           path="/users/users-post"
           element={
-            //<ProtectedRoute>
-            <UserPostPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <UserPostPage />
+            </ProtectedRoute>
           }
         />
 
@@ -54,27 +59,27 @@ const App = () => {
         <Route
           path="/workplaces/all-workplaces"
           element={
-            //<ProtectedRoute>
-            <WorkplacesPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplacesPage />
+            </ProtectedRoute>
           }
         />
         {/* Update workplace */}
         <Route
           path="/workplaces/workplace-update/:id"
           element={
-            //<ProtectedRoute>
-            <WorkplaceUpdatePage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplaceUpdatePage />
+            </ProtectedRoute>
           }
         />
         {/* Delete workplace */}
         <Route
           path="/workplaces/workplace-post"
           element={
-            //<ProtectedRoute>
-            <WorkplacePostPage />
-            //</ProtectedRoute>
+            <ProtectedRoute>
+              <WorkplacePostPage />
+            </ProtectedRoute>
           }
         />
       </Routes>

@@ -8,7 +8,7 @@ const { pool } = require("../db");
 
 // login user
 router.post(
-  "/login-user",
+  "/",
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { username, password } = req.body;
@@ -54,13 +54,48 @@ router.post(
           ),
           httpOnly: true,
         };
-        res.cookie("jwt", token, cookiesOptions);
+        res.cookie("token", token, cookiesOptions);
         res.status(200).json({
           success: true,
           user,
+          token,
         });
       }
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
+// load user
+router.get(
+  "/getuser",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      queryPromise = () => {
+        return new Promise((resolve, reject) => {
+          console.log(req.user.id)
+          pool.query("SELECT * FROM user WHERE id = ?",
+          [req.user.id], (err, res) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(res);
+          });
+        });
+      };
+    
+      const user = await queryPromise();
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists", 400));
+      }
+
+      res.status(200).json({
+        success: true,
+        user,
+      });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }

@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
-// import locals
-import styles from "../../styles/styles";
-
 const Login = () => {
   const navigate = useNavigate();
   // Set fields required for login
@@ -21,16 +18,16 @@ const Login = () => {
     // POST request
     await axios
       .post(
-        `${server}/user/login-user`,
+        `${server}/user`,
         {
           username,
           password,
         },
+        { withCredentials: true }
       )
       .then((res) => {
-        console.log(res)
         toast.success("Login Success!");
-        navigate("/users/all-users");
+        navigate("/workplaces/all-workplaces");
         window.location.reload(true);
       })
       .catch((err) => {
